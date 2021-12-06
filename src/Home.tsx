@@ -3,7 +3,8 @@ import styled from "styled-components";
 import Countdown from "react-countdown";
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import placeHolderImage from './media/image-placeholder.jpeg'
+import placeHolderImage from './media/logo.png';
+import gifImage from './media/dinogif.gif';
 import * as anchor from "@project-serum/anchor";
 
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
@@ -41,6 +42,10 @@ const Home = (props: HomeProps) => {
   const [isActive, setIsActive] = useState(false); // true when countdown completes
   const [isSoldOut, setIsSoldOut] = useState(false); // true when items remaining is zero
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
+
+  const [itemsAvailable, setItemsAvailable] = useState(0);
+  const [itemsRedeemed, setItemsRedeemed] = useState(0);
+  const [itemsRemaining, setItemsRemaining] = useState(0);
 
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
@@ -143,6 +148,7 @@ const Home = (props: HomeProps) => {
           props.connection
         );
 
+      setItemsRemaining(itemsRemaining);
       setIsSoldOut(itemsRemaining === 0);
       setStartDate(goLiveDate);
       setCandyMachine(candyMachine);
@@ -167,11 +173,11 @@ const Home = (props: HomeProps) => {
       } */}
       
       <div style={{display: 'flex', flexDirection: 'row', marginBottom: '5px'}}>
-        <h1 style={{color: 'white', fontSize: '42px', marginBottom: '5px', marginTop: '5px'}}>Place</h1>
-        <h1 style={{color: '#5658dd', fontSize: '42px', marginBottom: '5px',  marginTop: '5px'}}>Holder</h1>
+        <h1 style={{color: 'white', fontSize: '42px', marginBottom: '5px', marginTop: '5px', marginRight: '10px'}}>Dinosol</h1>
+        <h1 style={{color: '#5658dd', fontSize: '42px', marginBottom: '5px',  marginTop: '5px', marginLeft: '10px'}}>Kingdom</h1>
       </div>
 
-      <h3 style={{color: '#9ca9b3', marginBottom: '20px'}}>This is placeholder text that can be replaced.</h3>
+      <h3 style={{color: '#9ca9b3', marginBottom: '20px'}}>Dinosols official mint page.</h3>
 
       {!wallet && <ConnectButton>Connect Wallet</ConnectButton>}
 
@@ -200,9 +206,10 @@ const Home = (props: HomeProps) => {
                     )}
         </MintButton>
         }
+        {wallet && <p>Remaining: {itemsRemaining}</p>}
       </MintContainer>
 
-      <img src={placeHolderImage} style={{width: '550px', marginTop: '20px'}}/>
+      <img src={gifImage} style={{width: '550px', marginTop: '20px'}}/>
 
       <Snackbar
         open={alertState.open}

@@ -1,5 +1,5 @@
 import React from 'react';
-import placeHolderImage from '../media/image-placeholder.jpeg'
+import placeHolderImage from '../media/logo.png'
 import { Button, CircularProgress, Snackbar } from "@material-ui/core";
 
 const navBar = () => {
@@ -22,13 +22,13 @@ const navBar = () => {
     <div style={frowCenter}>
       <div style={{...frowBetween, width: '70%'}}>
         <div>
-          <a href=''>
+          <a href='https://dinosols.app'>
             <img src={placeHolderImage} style={{width: '30px'}}/>
           </a>  
         </div>
-        <div style={{...frowBetween, width: '25%'}}>
-          <Button style={{color: 'white'}} href='https://discord.com/'>Discord</Button>
-          <Button style={{background: '#6163ff', color: 'white'}} href='https://twitter.com/'>Twitter</Button>
+        <div style={{...frowBetween, width: '23%'}}>
+          <Button style={{background: '#6163ff', color: 'white'}} href='https://t.co/Nb7mmxkp5O'>Discord</Button>
+          <Button style={{background: '#6163ff', color: 'white'}} href='https://twitter.com/DinosolsNFT'>Twitter</Button>
         </div>
 
       </div>
